@@ -34,6 +34,7 @@ namespace GenshinTianLiBattleClientUpdateService.Controllers
             }
             return Ok(latestVersion.Version);
         }
+        
         // GET: Artifact/Version/DownloadUrl
         [HttpGet]
         [Route("Version/DownloadUrl/{version}")]
@@ -51,6 +52,24 @@ namespace GenshinTianLiBattleClientUpdateService.Controllers
             }
             return Ok(artifact.DownloadUrl);
         }
+
+        // GET: Artifact/Version/DownloadUrl/Latest
+        [HttpGet]
+        [Route("Version/DownloadUrl/Latest")]
+        public IActionResult GetLatestDownloadUrl()
+        {
+            // 获取最新版本下载链接
+            var artifact = _context.Artifacts
+                .OrderByDescending(a => a.UpdateTime)
+                .FirstOrDefault();
+
+            if (artifact == null)
+            {
+                return NotFound();
+            }
+            return Ok(artifact.DownloadUrl);
+        }
+
 
         // GET: Artifact/Version/DownloadUrlAndHash
         [HttpGet]

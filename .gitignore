@@ -361,3 +361,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/GenshinTianLiBattleClientUpdateService/appsettings.json
+/GenshinTianLiBattleClientUpdateService/.config/dotnet-tools.json
+/GenshinTianLiBattleClientUpdateService/appsettings.Development.json
