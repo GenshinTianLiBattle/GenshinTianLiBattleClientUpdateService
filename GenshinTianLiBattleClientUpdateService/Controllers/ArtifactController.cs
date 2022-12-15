@@ -10,7 +10,7 @@ using GenshinTianLiBattleClientUpdateService.Models;
 
 namespace GenshinTianLiBattleClientUpdateService.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class ArtifactController : ControllerBase
     {
@@ -21,7 +21,7 @@ namespace GenshinTianLiBattleClientUpdateService.Controllers
             _context = context;
         }
 
-        // GET: api/Artifact/Version/Latest
+        // GET: Artifact/Version/Latest
         [HttpGet]
         [Route("Version/Latest")]
         public IActionResult GetLatestVersion()
@@ -34,7 +34,7 @@ namespace GenshinTianLiBattleClientUpdateService.Controllers
             }
             return Ok(latestVersion.Version);
         }
-        // GET: api/Artifact/Version/DownloadUrl
+        // GET: Artifact/Version/DownloadUrl
         [HttpGet]
         [Route("Version/DownloadUrl/{version}")]
         public IActionResult GetDownloadUrl(string version)
@@ -52,7 +52,7 @@ namespace GenshinTianLiBattleClientUpdateService.Controllers
             return Ok(artifact.DownloadUrl);
         }
 
-        // GET: api/Artifact/Version/DownloadUrlAndHash
+        // GET: Artifact/Version/DownloadUrlAndHash
         [HttpGet]
         [Route("Version/DownloadUrlAndHash/{version}")]
         public IActionResult GetDownloadUrlAndHash(string version)
@@ -71,12 +71,13 @@ namespace GenshinTianLiBattleClientUpdateService.Controllers
             return Ok(artifact.Hash + "|"+ artifact.DownloadUrl);
         }
 
-        // POST: api/Artifact
+        // POST: Artifact
         [HttpPost]
         public async Task<ActionResult<Artifact>> PostArtifact(Artifact artifact, string token)
         {
             if (_context.Tokens.Where(t => t.TokenString == token).FirstOrDefault() == null)
             {
+                Console.WriteLine("token:" + token);
                 return Unauthorized();
             }
 

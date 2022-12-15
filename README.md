@@ -3,13 +3,13 @@
 
 Artifact
 
-- GET /api/Artifact/Version/Latest
+- GET /Artifact/Version/Latest
 
-- GET /api/Artifact/Version/DownloadUrl/\{version\}
+- GET /Artifact/Version/DownloadUrl/\{version\}
 
-- GET /api/Artifact/Version/DownloadUrlAndHash/\{version\}
+- GET /Artifact/Version/DownloadUrlAndHash/\{version\}
 
-- POST /api/Artifact/\{Token\}
+- POST /Artifact/\{Token\}
 
 Schemas
 - Artifact
